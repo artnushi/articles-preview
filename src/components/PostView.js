@@ -26,9 +26,11 @@ class PostView extends Component {
         })
     }
 
+    createMarkup = () => {
+        return {__html: this.state.post.content.rendered};
+    }
+
     renderPost = () => {
-
-
         if (this.state.post) {
             let {rendered} = this.state.post.title;
 
@@ -42,6 +44,8 @@ class PostView extends Component {
                         <div className="d-flex justify-content-end">
                             <SocialIcons />
                         </div>
+
+                        <div className={'mx-4 my-4'} dangerouslySetInnerHTML={this.createMarkup()} />
                     </div>
                 </div>
             )
