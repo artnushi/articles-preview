@@ -17,7 +17,7 @@ class PostView extends Component {
     }
 
     fetchPost = (id) => {
-        axios.get(`http://cloverlabs.io/wp-json/wp/v2/posts/${id}`).then( (response) => {
+        axios.get(`https://cloverlabs.io/wp-json/wp/v2/posts/${id}`).then( (response) => {
             this.setState({
                 post: response.data
             })

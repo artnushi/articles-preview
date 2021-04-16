@@ -14,7 +14,7 @@ class Posts extends Component {
     }
 
     fetchPosts = () => {
-        axios.get("http://cloverlabs.io/wp-json/wp/v2/posts").then( (response) => {
+        axios.get("https://cloverlabs.io/wp-json/wp/v2/posts").then( (response) => {
             this.setState({
                 posts: response.data
             })
