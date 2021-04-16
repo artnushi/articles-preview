@@ -1,1 +1,19 @@
+/* Bootstrap */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Variables, Mixins, Functions */
+// here goes variables, mixings importing
+
+/* Fonts */
+// here goes fonts importing
+
+
+/* Layout-related sections */
+@import './layout/header';
+@import './layout/footer';
+
+/* components */
+@import './component/posts';
+
+/* pages */
+@import './page/global';
