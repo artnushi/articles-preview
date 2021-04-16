@@ -1,7 +1,24 @@
-.posts {
-  .single-post-image {
-    max-width: 100%;
+.single-post-image {
+  max-width: 100%;
+}
+
+.custom-box-shadow {
+  box-shadow: 4px 3px 13px -2px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 4px 3px 13px -2px rgba(0,0,0,0.15);
+  -moz-box-shadow: 4px 3px 13px -2px rgba(0,0,0,0.15);
+}
+
+.social-icons {
+  list-style-type: none;
+  padding: 0;
+
+  > li {
+    display: inline;
+    margin-right: 10px;
   }
+}
+.posts {
+  margin: 50px 0;
 
   .custom-btn {
     padding-left: 30px;
@@ -9,9 +26,8 @@
     border-radius: 0;
   }
 
-  .custom-box-shadow {
-    box-shadow: 4px 3px 13px -2px rgba(0,0,0,0.15);
-    -webkit-box-shadow: 4px 3px 13px -2px rgba(0,0,0,0.15);
-    -moz-box-shadow: 4px 3px 13px -2px rgba(0,0,0,0.15);
+  .post-title {
+    padding: 40px 30px;
+
   }
 }

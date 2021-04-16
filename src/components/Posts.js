@@ -11,7 +11,6 @@ class Posts extends Component {
 
     componentDidMount() {
         this.fetchPosts();
-        console.log('this.state.posts', this.state.posts)
     }
 
     fetchPosts = () => {
@@ -27,13 +26,13 @@ class Posts extends Component {
 
     renderPost = () => {
         let {posts} = this.state;
+
         return has(posts) ? posts.map( (post, index) => {
             return (
                 <PostItem key={post.id} item={post} />
             )
         })
         :
-
         <Loader />;
     }
 

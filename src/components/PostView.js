@@ -1,20 +1,67 @@
 import React, {Component} from 'react';
+import axios from "axios";
+import Loader from "./Loader";
+import SocialIcons from "./SocialIcons";
 
 class PostView extends Component {
 
     state = {
-        postId: parseInt(this.props.match.params.id)
+        postId: parseInt(this.props.match.params.id),
+        post: null
     }
 
     componentDidMount() {
         console.log('post id', this.state.postId)
-        console.log('single posts', this.props.match)
+        console.log('post id', this.state.post)
+        let postId = this.state.postId;
+
+        this.fetchPost(postId);
+    }
+
+    fetchPost = (id) => {
+        axios.get(`http://cloverlabs.io/wp-json/wp/v2/posts/${id}`).then( (response) => {
+            console.log('response.data view', response.data)
+            this.setState({
+                post: response.data
+            })
+        }, () => {
+            console.log('fail')
+        })
+    }
+
+    renderPost = () => {
+
+
+        if (this.state.post) {
+            let {rendered} = this.state.post.title;
+
+            return (
+                <div className="row">
+                    <div className="col-md-12 custom-box-shadow p-0">
+                        <img src={"/assets/images/newspaper.jpg"} className="single-post-image"  alt="single post image"/>
+                        <div className="post-title">
+                            <h1>{rendered}</h1>
+                        </div>
+                        <div className="d-flex justify-content-end">
+                            <SocialIcons />
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <Loader />
+            )
+        }
     }
 
     render() {
+
         return (
             <>
-                Single post render {this.state.postId}
+                <div className="posts">
+                    {this.renderPost()}
+                </div>
             </>
         );
     }
