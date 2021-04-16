@@ -3,6 +3,7 @@ import PostItem from "./PostItem";
 import axios from "axios";
 import {has} from "../utils/helpers";
 import Loader from "./Loader";
+import {API_BASE_URL} from "../utils/config";
 
 class Posts extends Component {
     state = {
@@ -14,12 +15,12 @@ class Posts extends Component {
     }
 
     fetchPosts = () => {
-        axios.get("http://cloverlabs.io/wp-json/wp/v2/posts").then( (response) => {
+        axios.get(API_BASE_URL).then( (response) => {
             this.setState({
                 posts: response.data
             })
         }, () => {
-            console.log('fail')
+            console.log('failed response')
         })
     }
 

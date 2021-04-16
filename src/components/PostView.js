@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Loader from "./Loader";
 import SocialIcons from "./SocialIcons";
+import {API_BASE_URL} from "../utils/config";
 
 class PostView extends Component {
 
@@ -17,12 +18,12 @@ class PostView extends Component {
     }
 
     fetchPost = (id) => {
-        axios.get(`http://cloverlabs.io/wp-json/wp/v2/posts/${id}`).then( (response) => {
+        axios.get(`${API_BASE_URL}/${id}`).then( (response) => {
             this.setState({
                 post: response.data
             })
         }, () => {
-            console.log('fail')
+            console.log('failed response')
         })
     }
 
@@ -45,7 +46,7 @@ class PostView extends Component {
                             <SocialIcons />
                         </div>
 
-                        <div className={'mx-4 my-4'} dangerouslySetInnerHTML={this.createMarkup()} />
+                        <div className={'m-4'} dangerouslySetInnerHTML={this.createMarkup()} />
                     </div>
                 </div>
             )
