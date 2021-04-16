@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Loader from "./Loader";
 import SocialIcons from "./SocialIcons";
-import {API_BASE_URL} from "../utils/config";
 
 class PostView extends Component {
 
@@ -18,7 +17,7 @@ class PostView extends Component {
     }
 
     fetchPost = (id) => {
-        axios.get(`${API_BASE_URL}/${id}`).then( (response) => {
+        axios.get(`http://cloverlabs.io/wp-json/wp/v2/posts/${id}`).then( (response) => {
             this.setState({
                 post: response.data
             })
