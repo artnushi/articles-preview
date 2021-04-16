@@ -2,7 +2,7 @@ import Logo from "./components/Logo";
 import Layout from "./components/Layout";
 import Posts from "./components/Posts";
 import {Route, Switch} from "react-router-dom";
-import SinglePost from "./components/SinglePost";
+import PostView from "./components/PostView";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
             <Logo />
 
             <Switch>
-                <Route path="/post/:id" component={SinglePost} />
+                <Route path="/post/:id" component={PostView} />
                 <Route exact path="/" component={Posts} />
             </Switch>
         </Layout>

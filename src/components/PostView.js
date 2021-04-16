@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class SinglePost extends Component {
+class PostView extends Component {
 
     state = {
         postId: parseInt(this.props.match.params.id)
@@ -14,10 +14,10 @@ class SinglePost extends Component {
     render() {
         return (
             <>
-                Single post render
+                Single post render {this.state.postId}
             </>
         );
     }
 }
 
-export default SinglePost;
+export default PostView;

@@ -1,24 +1,40 @@
 import React, {Component} from 'react';
 import PostItem from "./PostItem";
+import axios from "axios";
+import {has} from "../utils/helpers";
+import Loader from "./Loader";
 
 class Posts extends Component {
     state = {
-        posts: [
-            {id: 1, title: "Title of the post", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur et excepturi, hic, impedit ipsum molestias natus nemo nihil qui quidem ullam voluptatibus? Blanditiis eius excepturi pariatur quasi sapiente soluta."},
-            {id: 2, title: "Title of the post 2", description: "Lorem ipsum dolor sit amet 2, consectetur adipisicing elit. At consectetur et excepturi, hic, impedit ipsum molestias natus nemo nihil qui quidem ullam voluptatibus? Blanditiis eius excepturi pariatur quasi sapiente soluta."}
-        ]
+        posts: []
     }
 
     componentDidMount() {
+        this.fetchPosts();
+        console.log('this.state.posts', this.state.posts)
+    }
 
+    fetchPosts = () => {
+        axios.get("http://cloverlabs.io/wp-json/wp/v2/posts").then( (response) => {
+            console.log('response.data', response.data)
+            this.setState({
+                posts: response.data
+            })
+        }, () => {
+            console.log('fail')
+        })
     }
 
     renderPost = () => {
-        return this.state.posts.length > 0 && this.state.posts.map( (post, index) => {
+        let {posts} = this.state;
+        return has(posts) ? posts.map( (post, index) => {
             return (
                 <PostItem key={post.id} item={post} />
             )
-        });
+        })
+        :
+
+        <Loader />;
     }
 
     render() {
