@@ -11,8 +11,6 @@ class PostView extends Component {
     }
 
     componentDidMount() {
-        console.log('post id', this.state.postId)
-        console.log('post id', this.state.post)
         let postId = this.state.postId;
 
         this.fetchPost(postId);
@@ -20,7 +18,6 @@ class PostView extends Component {
 
     fetchPost = (id) => {
         axios.get(`http://cloverlabs.io/wp-json/wp/v2/posts/${id}`).then( (response) => {
-            console.log('response.data view', response.data)
             this.setState({
                 post: response.data
             })

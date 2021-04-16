@@ -13,7 +13,6 @@ const PostItem = ({item}) => {
             <div className="col-md-8 my-3 my-md-0">
                 <h2>{rendered}</h2>
                 <p>
-                    {/*{description}*/}
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aspernatur dolor eum facere
                     magni maiores nihil quia quibusdam reiciendis tenetur. Asperiores autem dolor expedita perferendis
                     provident quasi ratione vel veritatis.
