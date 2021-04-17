@@ -30,16 +30,19 @@ class PostView extends Component {
         return {__html: this.state.post.content.rendered};
     }
 
+    renderedTitle = () => {
+        return {__html: this.state.post.title.rendered};
+    }
+
     renderPost = () => {
         if (this.state.post) {
-            let {rendered} = this.state.post.title;
 
             return (
                 <div className="row">
                     <div className="col-md-12 custom-box-shadow p-0">
                         <img src={"/assets/images/newspaper.jpg"} className="single-post-image"  alt="single post image"/>
                         <div className="post-title">
-                            <h1>{rendered}</h1>
+                            <h1 dangerouslySetInnerHTML={this.renderedTitle()} />
                         </div>
                         <div className="d-flex justify-content-end">
                             <SocialIcons />
